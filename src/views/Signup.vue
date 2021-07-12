@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="signup">
     <signup-input></signup-input>
   </div>
 </template>
