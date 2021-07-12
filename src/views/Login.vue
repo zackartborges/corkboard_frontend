@@ -9,7 +9,7 @@ import LoginInput from "../components/LoginInput.vue";
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  name: "Login",
   components: {
     LoginInput,
   },
