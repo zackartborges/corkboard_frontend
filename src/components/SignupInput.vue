@@ -46,7 +46,7 @@
     </form>
   </div>
 </template>
-when creating user, image_url bio and current location null for
+// when creating user, image_url bio and current location null for
 <script>
 import axios from "axios";
 
