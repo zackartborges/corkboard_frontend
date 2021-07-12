@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="login">
     <login-input></login-input>
   </div>
 </template>
