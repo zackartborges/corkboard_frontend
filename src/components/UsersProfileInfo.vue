@@ -3,7 +3,7 @@
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   data: function () {
@@ -12,11 +12,24 @@ export default {
       errors: [],
     };
   },
+  created: function () {
+    this.showUser();
+  },
   methods: {
+    showUser: function () {
+      axios.get(`/api/users/${this.$route.params.id}`).then((response) => {
+        this.user = response.data;
+        console.log(response.data);
+      });
+      // item_weight.reduce(function (a, b) {
+      //   return a + b;
+      // }, 0);
+    },
+
     // submit: function () {
     //   var params = {
     //     name: this.name,
-    //     email: this.email,
+    //     email: this.email,`
     //     username: this.username,
     //     image_url: this.imageUrl,
     //     current_location: this.currentLocation,
