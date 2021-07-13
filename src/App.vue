@@ -6,6 +6,8 @@
       <router-link to="/signup">Signup</router-link>
       |
       <router-link to="/login">Login</router-link>
+      |
+      <router-link to="/users-profile">My Profile</router-link>
     </div>
     <router-view />
   </div>
