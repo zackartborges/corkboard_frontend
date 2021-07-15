@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
-import UsersProfile from "../views/UsersProfile.vue";
+import UsersShow from "../views/UsersShow.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -23,9 +23,9 @@ const routes = [
     component: Signup,
   },
   {
-    path: "/users-profile",
-    name: "users-profile",
-    component: UsersProfile,
+    path: "/users-show/:id",
+    name: "users-show",
+    component: UsersShow,
   },
 ];
 
