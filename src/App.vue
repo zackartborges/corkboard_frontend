@@ -7,7 +7,9 @@
       |
       <router-link to="/login">Login</router-link>
       |
-      <router-link to="/users-profile">My Profile</router-link>
+      <router-link to="/users-show/:id">My Profile</router-link>
+      |
+      <router-link to="/logout">Logout</router-link>
     </div>
     <router-view />
   </div>

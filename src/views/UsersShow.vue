@@ -1,17 +1,17 @@
 <template>
   <div class="users-show">
-    <users-profile-info></users-profile-info>
+    <users-show-info></users-show-info>
   </div>
 </template>
 
 <script>
-import UsersProfileInfo from "../components/UsersProfileInfo.vue";
+import UsersShowInfo from "../components/UsersShowInfo.vue";
 // @ is an alias to /src
 
 export default {
-  name: "UsersProfile",
+  name: "UsersShow",
   components: {
-    UsersProfileInfo,
+    UsersShowInfo,
   },
 };
 </script>

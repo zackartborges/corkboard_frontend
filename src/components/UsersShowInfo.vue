@@ -8,8 +8,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      user: {},
-      errors: [],
+      // -
     };
   },
   created: function () {
@@ -20,7 +19,7 @@ export default {
       axios.get(`/api/users/${this.$route.params.id}`).then((response) => {
         console.log(this.$route.params.id);
         this.user = response.data;
-        // console.log(response.data);
+        console.log(response.data);
       });
     },
   },
