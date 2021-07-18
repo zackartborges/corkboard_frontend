@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import UsersShow from "../views/UsersShow.vue";
 import Logout from "../views/Logout.vue";
+import ConnectionsIndex from "../views/ConnectionsIndex.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
     path: "/logout",
     name: "logout",
     component: Logout,
+  },
+  {
+    path: "/connections",
+    name: "connections-index",
+    component: ConnectionsIndex,
   },
 ];
 
