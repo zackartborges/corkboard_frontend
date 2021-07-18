@@ -7,7 +7,7 @@
       |
       <router-link to="/login">Login</router-link>
       |
-      <router-link to="/users-profile">My Profile</router-link>
+      <router-link :to="`/users-show/${getUserId()}`">My Profile</router-link>
       |
       <router-link to="/logout">Logout</router-link>
     </div>
@@ -37,3 +37,24 @@
   color: #42b983;
 }
 </style>
+
+<script>
+// import moment from "moment";
+// import axios from "axios";
+export default {
+  data: function () {
+    return {
+      flashMessage: "",
+      mutual: true,
+    };
+  },
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+    getUserId: function () {
+      return parseInt(localStorage.getItem("user_id"));
+    },
+  },
+};
+</script>
