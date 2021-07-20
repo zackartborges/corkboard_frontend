@@ -10,6 +10,10 @@
         <p>{{ message.body }}</p>
         <hr />
       </div>
+      <form v-on:submit.prevent="messageCreate()">
+        <textarea v-model="newMessageBody" cols="30" rows="10"></textarea>
+        <input type="submit" />
+      </form>
     </div>
   </div>
 </template>
@@ -25,14 +29,27 @@ export default {
           username: "",
         },
       },
+      newMessageBody: "",
     };
   },
   created: function () {
-    axios.get("/api/connections/1").then((response) => {
+    axios.get(`/api/connections/${this.$route.params.id}`).then((response) => {
       this.connection = { ...response.data };
       console.log(this.connection);
     });
   },
-  methods: {},
+  methods: {
+    messageCreate: function () {
+      var params = {
+        body: this.newMessageBody,
+        connection_id: this.$route.params.id,
+      };
+      console.log(params);
+      axios.post("/api/messages", params).then((response) => {
+        this.connection.messages.push(response.data);
+        console.log(response.data);
+      });
+    },
+  },
 };
 </script>
