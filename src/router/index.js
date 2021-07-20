@@ -6,6 +6,7 @@ import Signup from "../views/Signup.vue";
 import UsersShow from "../views/UsersShow.vue";
 import Logout from "../views/Logout.vue";
 import ConnectionsIndex from "../views/ConnectionsIndex.vue";
+import ConnectionsShow from "../views/ConnectionsShow.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -38,6 +39,11 @@ const routes = [
     path: "/connections",
     name: "connections-index",
     component: ConnectionsIndex,
+  },
+  {
+    path: "/connections/:id",
+    name: "connections-show",
+    component: ConnectionsShow,
   },
 ];
 
