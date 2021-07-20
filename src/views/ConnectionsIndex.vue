@@ -1,5 +1,5 @@
 <template>
-  <div class="connection-index">
+  <div class="connections-index">
     <user-connections />
   </div>
 </template>

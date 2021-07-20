@@ -1,8 +1,11 @@
 <template>
-  <div class="connection-index">
+  <div class="user-connections">
     <div class="user-info">
       <h1>Your Accepted Connections</h1>
-      <div v-for="connection in accepted_connections" v-bind:key="connection.id">
+      <div
+        v-for="connection in accepted_connections"
+        v-bind:key="connection.id"
+      >
         <h3>Username:</h3>
         {{ connection.connected_user.username }}
         <h3>Location</h3>
