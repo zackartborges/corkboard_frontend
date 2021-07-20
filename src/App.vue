@@ -3,15 +3,19 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
-      <router-link to="/signup">Signup</router-link>
-      |
-      <router-link to="/login">Login</router-link>
-      |
-      <router-link :to="`/users-show/${getUserId()}`">My Profile</router-link>
-      |
-      <router-link to="/logout">Logout</router-link>
-      |
-      <router-link to="/connections">Your Connections</router-link>
+      <span v-if="isLoggedIn()">
+        <router-link :to="`/users-show/${getUserId()}`">My Profile</router-link>
+        |
+        <router-link to="/connections">Your Connections</router-link>
+        |
+        <router-link to="/logout">Logout</router-link>
+      </span>
+      <span v-else>
+        |
+        <router-link to="/signup">Signup</router-link>
+        |
+        <router-link to="/login">Login</router-link>
+      </span>
     </div>
     <router-view />
   </div>
