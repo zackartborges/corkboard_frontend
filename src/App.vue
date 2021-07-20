@@ -10,6 +10,8 @@
       <router-link :to="`/users-show/${getUserId()}`">My Profile</router-link>
       |
       <router-link to="/logout">Logout</router-link>
+      |
+      <router-link to="/connections">Your Connections</router-link>
     </div>
     <router-view />
   </div>
