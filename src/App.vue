@@ -2,8 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>
-      |
       <span v-if="isLoggedIn()">
+        |
         <router-link :to="`/users-show/${getUserId()}`">My Profile</router-link>
         |
         <router-link to="/connections">Your Connections</router-link>
