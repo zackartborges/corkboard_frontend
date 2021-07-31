@@ -1,12 +1,20 @@
 <template>
   <div class="user-list">
     <div v-for="user in users" v-bind:key="user.id">
+      {{ user.id }}
+      <br />
       {{ user.profile_picture }}
       Name:
       {{ user.name }}
       <br />
       Username:
       {{ user.username }}
+      <br />
+      Location:
+      {{ user.current_location }}
+      <br />
+      Bio:
+      {{ user.bio }}
       <br />
       <button v-on:click="connectionRequest(user)">Send Friend Request</button>
       <hr />
@@ -42,7 +50,12 @@ export default {
         // sender_id: current_user.id,
         recipient_id: user.id,
       };
-      axios.post("api/connections", params);
+      axios.post("api/connections", params).then((response) => {
+        var index = this.users.indexOf(user);
+        console.log(index);
+        this.users.splice(index, 1);
+        console.log(response.data);
+      });
     },
   },
 };
