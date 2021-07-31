@@ -4,7 +4,7 @@
     <span class="edit-user-info">
       <dialog id="user-details">
         <form method="dialog">
-          <h2>Gear Info</h2>
+          <h2>My Info</h2>
           <p>
             Name:
             <input type="text" v-model="user.name" />
