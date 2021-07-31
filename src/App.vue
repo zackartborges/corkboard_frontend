@@ -24,6 +24,9 @@
 </template>
 
 <style>
+h1 {
+  color: red;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
