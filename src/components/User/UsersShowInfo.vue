@@ -11,7 +11,7 @@
       <h3>Bio:</h3>
       <p>{{ user.bio }}</p>
       <h3>Profile Picture</h3>
-      <p>{{ user.image_url }}</p>
+      <img :src="user.image_url" />
     </div>
   </div>
 </template>
@@ -30,8 +30,7 @@ export default {
   },
   methods: {
     showUser: function () {
-      axios.get(`/api/users/${localStorage.getItem("user_id")}`).then((response) => {
-        // console.log(this.$route.params.id);
+      axios.get(`/api/users/${this.$route.params.id}`).then((response) => {
         this.user = response.data;
         console.log(response.data);
       });
