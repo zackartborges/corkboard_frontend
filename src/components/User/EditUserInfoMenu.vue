@@ -25,7 +25,12 @@
             Profile Picture:
             <input type="text" v-model="user.profilePicture" />
           </p>
-          <button v-on:click.prevent="updateProfileInfo(user)" data-dismiss="modal">Update</button>
+          <button
+            v-on:click.prevent="updateProfileInfo(user)"
+            data-dismiss="modal"
+          >
+            Update
+          </button>
           <button>Close</button>
         </form>
       </dialog>
@@ -53,11 +58,13 @@ export default {
   },
   methods: {
     showUser: function () {
-      axios.get(`/api/users/${localStorage.getItem("user_id")}`).then((response) => {
-        // console.log(this.$route.params.id);
-        this.user = response.data;
-        console.log(response.data);
-      });
+      axios
+        .get(`/api/users/${localStorage.getItem("user_id")}`)
+        .then((response) => {
+          // console.log(this.$route.params.id);
+          this.user = response.data;
+          console.log(response.data);
+        });
     },
     updateProfileInfo: function (user) {
       var params = {
@@ -68,6 +75,7 @@ export default {
       };
       axios.patch("api/users/" + user.id, params).then((response) => {
         console.log("Updated Data", response.data);
+        this.user = response.data;
       });
     },
     showUserInfo: function (user) {
