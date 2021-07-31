@@ -1,9 +1,11 @@
 <template>
   <div class="user-connection">
     <div class="user-info">
-      <h1>
-        {{ connection.connection_profile.username }}
-      </h1>
+      <router-link :to="`/users-show/${connection.connection_profile.id}`">
+        <h1>
+          {{ connection.connection_profile.username }}
+        </h1>
+      </router-link>
       <div v-for="message in connection.messages" :key="message.id">
         <p>{{ message.user.username }}</p>
         <p>{{ message.sent }}</p>
