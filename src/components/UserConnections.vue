@@ -42,7 +42,9 @@
         {{ connection.sender.current_location }}
         <h3>bio:</h3>
         {{ connection.sender.bio }}
+        <button v-on:click="handleAccept(connection)">Accept</button>
         <hr />
+        <button v-on:click="handleDecline">Decline</button>
       </div>
     </div>
   </div>
@@ -97,6 +99,36 @@ export default {
         console.log("pending:", this.pending_connections);
       });
       // this.accepted_connections = this.connections.filter((connection) => connection[0]["status"] === 1);
+    },
+    handleAccept: function (connection) {
+      var params = {
+        status: 1,
+      };
+      axios
+        .patch(`/api/connections/${connection.id}`, params)
+        .then((response) => {
+          console.log(response.data);
+          var index = this.pending_connections.indexOf(connection);
+          this.pending_connections.splice(index, 1);
+          let updatedConnection = {
+            connected_user: response.data.connection_profile,
+            messages: [],
+            status: 1,
+          };
+          this.accepted_connections.unshift(updatedConnection);
+        });
+    },
+    handleDecline: function (connection) {
+      var params = {
+        status: -1,
+      };
+      axios
+        .patch(`/api/connections/${connection.id}`, params)
+        .then((response) => {
+          console.log(response.data);
+          var index = this.pending_connections.indexOf(connection);
+          this.pending_connections.splice(index, 1);
+        });
     },
   },
 };
