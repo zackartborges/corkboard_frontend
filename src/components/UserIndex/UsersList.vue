@@ -1,9 +1,9 @@
 <template>
   <div class="user-list">
     <div v-for="user in users" v-bind:key="user.id">
-      {{ user.id }}
       <br />
-      {{ user.profile_picture }}
+      <img :src="user.image_url" style="width: 400px" />
+      <br />
       Name:
       {{ user.name }}
       <br />
