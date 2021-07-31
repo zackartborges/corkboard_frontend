@@ -8,6 +8,8 @@
         |
         <router-link to="/connections">Your Connections</router-link>
         |
+        <router-link to="/users">Find Friends!</router-link>
+        |
         <router-link to="/logout">Logout</router-link>
       </span>
       <span v-else>
