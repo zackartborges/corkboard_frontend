@@ -23,7 +23,7 @@
           </p>
           <p>
             Profile Picture:
-            <input type="text" v-model="user.profilePicture" />
+            <input type="text" v-model="user.image_url" />
           </p>
           <button
             v-on:click.prevent="updateProfileInfo(user)"
@@ -49,7 +49,7 @@ export default {
       username: "",
       email: "",
       bio: "",
-      profilePicture: "",
+      image_url: "",
       errors: [],
     };
   },
@@ -72,6 +72,7 @@ export default {
         username: user.username,
         email: user.email,
         bio: user.bio,
+        image_url: user.image_url,
       };
       axios.patch("api/users/" + user.id, params).then((response) => {
         console.log("Updated Data", response.data);
