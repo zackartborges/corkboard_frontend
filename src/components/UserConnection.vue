@@ -2,9 +2,15 @@
   <div class="user-connection">
     <div class="user-info">
       <router-link :to="`/users-show/${connection.connection_profile.id}`">
-        <h1>
-          {{ connection.connection_profile.username }}
-        </h1>
+        <div>
+          <h1>
+            {{ connection.connection_profile.username }}
+          </h1>
+          <img
+            id="profile-pic"
+            :src="connection.connection_profile.image_url"
+          />
+        </div>
       </router-link>
       <div v-for="message in connection.messages" :key="message.id">
         <p>{{ message.user.username }}</p>
@@ -71,3 +77,10 @@ export default {
   },
 };
 </script>
+
+<style>
+#profile-pic {
+  width: 20vw;
+  border-radius: 50%;
+}
+</style>
