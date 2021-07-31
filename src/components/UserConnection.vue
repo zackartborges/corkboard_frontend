@@ -14,7 +14,7 @@
       </router-link>
       <div v-for="message in connection.messages" :key="message.id">
         <p>{{ message.user.username }}</p>
-        <p>{{ message.sent }}</p>
+        <p>{{ formatTime(message.sent) }}</p>
         <p>{{ message.body }}</p>
         <hr />
       </div>
@@ -29,6 +29,7 @@
 <script>
 import axios from "axios";
 import ActionCable from "actioncable";
+import moment from "moment";
 
 export default {
   data: function () {
@@ -73,6 +74,20 @@ export default {
         console.log(response.data);
         this.newMessageBody = "";
       });
+    },
+    formatTime: function (time) {
+      let message = "";
+      let timeSince = moment().diff(time, "hours");
+      if (timeSince < 1) {
+        timeSince = moment().diff(time, "minutes");
+        message = `${timeSince} minutes ago`;
+      } else if (timeSince > 24) {
+        timeSince = moment().diff(time, "days");
+        message = `${timeSince} days ago`;
+      } else {
+        message = `${timeSince} hours ago`;
+      }
+      return message;
     },
   },
 };
