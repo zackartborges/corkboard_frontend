@@ -4,12 +4,11 @@
       <router-link :to="`/users-show/${connection.connection_profile.id}`">
         <div>
           <h1>
+            <button type="button" class="btn btn-secondary">Primary</button>
+
             {{ connection.connection_profile.username }}
           </h1>
-          <img
-            id="profile-pic"
-            :src="connection.connection_profile.image_url"
-          />
+          <img id="profile-pic" :src="connection.connection_profile.image_url" />
         </div>
       </router-link>
       <div v-for="message in connection.messages" :key="message.id">
