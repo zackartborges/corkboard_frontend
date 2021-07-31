@@ -5,14 +5,20 @@
       <input v-model="userFilter" list="users" />
       <datalist id="users">
         <input v-model="userFilter" />
-        <option v-for="user in filterBy(users, userFilter, 'username')" :key="user.id">
+        <option
+          v-for="user in filterBy(users, userFilter, 'username')"
+          :key="user.id"
+        >
           {{ user.username }}
         </option>
       </datalist>
     </div>
     <div class="user-info">
       <h1>Your Accepted Connections</h1>
-      <div v-for="connection in accepted_connections" v-bind:key="connection.id">
+      <div
+        v-for="connection in accepted_connections"
+        v-bind:key="connection.id"
+      >
         <h3>Username:</h3>
         {{ connection.connected_user.username }}
         <h3>Location</h3>
