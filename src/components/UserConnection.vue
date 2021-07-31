@@ -1,12 +1,20 @@
 <template>
   <div class="user-connection">
     <div class="user-info">
-      <h1>
-        {{ connection.connection_profile.username }}
-      </h1>
+      <router-link :to="`/users-show/${connection.connection_profile.id}`">
+        <div>
+          <h1>
+            {{ connection.connection_profile.username }}
+          </h1>
+          <img
+            id="profile-pic"
+            :src="connection.connection_profile.image_url"
+          />
+        </div>
+      </router-link>
       <div v-for="message in connection.messages" :key="message.id">
         <p>{{ message.user.username }}</p>
-        <p>{{ message.sent }}</p>
+        <p>{{ formatTime(message.sent) }}</p>
         <p>{{ message.body }}</p>
         <hr />
       </div>
@@ -21,6 +29,7 @@
 <script>
 import axios from "axios";
 import ActionCable from "actioncable";
+import moment from "moment";
 
 export default {
   data: function () {
@@ -66,6 +75,27 @@ export default {
         this.newMessageBody = "";
       });
     },
+    formatTime: function (time) {
+      let message = "";
+      let timeSince = moment().diff(time, "hours");
+      if (timeSince < 1) {
+        timeSince = moment().diff(time, "minutes");
+        message = `${timeSince} minutes ago`;
+      } else if (timeSince > 24) {
+        timeSince = moment().diff(time, "days");
+        message = `${timeSince} days ago`;
+      } else {
+        message = `${timeSince} hours ago`;
+      }
+      return message;
+    },
   },
 };
 </script>
+
+<style>
+#profile-pic {
+  width: 20vw;
+  border-radius: 50%;
+}
+</style>
