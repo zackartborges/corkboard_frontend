@@ -1,23 +1,31 @@
 <template>
-  <div class="user-list">
+  <div class="user-list d-flex row align-items-center">
     <div v-for="user in users" v-bind:key="user.id">
-      <br />
-      <img :src="user.image_url" style="width: 400px" />
-      <br />
-      Name:
-      {{ user.name }}
-      <br />
-      Username:
-      {{ user.username }}
-      <br />
-      Location:
-      {{ user.current_location }}
-      <br />
-      Bio:
-      {{ user.bio }}
-      <br />
-      <button v-on:click="connectionRequest(user)">Send Friend Request</button>
-      <hr />
+      <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
+        <div class="card-header">Name: {{ user.name }}</div>
+        <div class="card-body">
+          <!-- <h4 class="card-title">Info card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+
+          <br />
+          <img :src="user.image_url" style="width: 400px" />
+          <br />
+          Name:
+
+          <br />
+          Username:
+          {{ user.username }}
+          <br />
+          Location:
+          {{ user.current_location }}
+          <br />
+          Bio:
+          {{ user.bio }}
+          <br />
+          <button v-on:click="connectionRequest(user)">Send Friend Request</button>
+        </div>
+        <hr />
+      </div>
     </div>
   </div>
 </template>
