@@ -40,11 +40,12 @@ export default {
       axios
         .post("/api/sessions", params)
         .then((response) => {
-          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           localStorage.setItem("user_id", response.data.user_id);
           // this.$router.push("/");
-          this.$router.push("/");
+          this.$router.push("/connections");
         })
         .catch((error) => {
           console.log(error.response);
