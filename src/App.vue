@@ -1,24 +1,69 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <span v-if="isLoggedIn()">
-        |
-        <router-link :to="`/users-show/${getUserId()}`">My Profile</router-link>
-        |
-        <router-link to="/connections">Your Connections</router-link>
-        |
-        <router-link to="/users">Find Friends!</router-link>
-        |
-        <router-link to="/logout">Logout</router-link>
-      </span>
-      <span v-else>
-        |
-        <router-link to="/signup">Signup</router-link>
-        |
-        <router-link to="/login">Login</router-link>
-      </span>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <router-link class="navbar-brand" to="/">Cork Board</router-link>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor01"
+          aria-controls="navbarColor01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li v-if="isLoggedIn()" class="nav-item">
+              <router-link class="nav-link" to="/connections"
+                >Connections
+              </router-link>
+            </li>
+            <li v-if="isLoggedIn()" class="nav-item">
+              <router-link :to="`/users-show/${getUserId()}`" class="nav-link"
+                >My Profile</router-link
+              >
+            </li>
+            <li v-if="isLoggedIn()" class="nav-item">
+              <router-link to="/users" class="nav-link" href="#"
+                >Find Friends</router-link
+              >
+            </li>
+            <li v-if="isLoggedIn()" class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Creators</a
+              >
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="https://github.com/zackartborges"
+                  >Zack Borges</a
+                >
+                <a class="dropdown-item" href="https://github.com/winstonbarbe"
+                  >Winston Barbe</a
+                >
+              </div>
+            </li>
+            <li v-if="isLoggedIn()" class="nav-item">
+              <router-link to="/logout" class="nav-link">Logout</router-link>
+            </li>
+            <li v-if="!isLoggedIn()" class="nav-item">
+              <router-link to="/login" class="nav-link">Login</router-link>
+            </li>
+            <li v-if="!isLoggedIn()" class="nav-item">
+              <router-link to="/signup" class="nav-link">Signup</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <router-view />
   </div>
 </template>
