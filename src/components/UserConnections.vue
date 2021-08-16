@@ -10,7 +10,7 @@
         </option>
       </datalist>
     </div>
-    <div class="accepted-user-info d-flex row align-items-center">
+    <div class="accepted-user-info text-center">
       <h1>Your Accepted Connections</h1>
 
       <div v-for="connection in accepted_connections" v-bind:key="connection.id">
@@ -18,18 +18,24 @@
           <router-link :to="`/connections/${connection.id}`">
             <img :src="connection.connected_user.image_url" class="card-img-top" />
           </router-link>
-          <div class="card-body">
+          <div class="card-body d-flex row align-items-center">
             <h3>Username:</h3>
-            {{ connection.connected_user.username }}
+            <p>
+              {{ connection.connected_user.username }}
+            </p>
             <h3>Location</h3>
-            {{ connection.connected_user.current_location }}
+            <p>
+              {{ connection.connected_user.current_location }}
+            </p>
             <h3>bio:</h3>
-            {{ connection.connected_user.bio }}
+            <p>
+              {{ connection.connected_user.bio }}
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <div class="pending-user-info d-flex row align-items-center">
+    <div class="pending-user-info text-center">
       <h1>Your Pending Connections</h1>
       <div v-for="connection in pending_connections" v-bind:key="connection.id">
         <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
@@ -38,11 +44,17 @@
           </router-link>
           <div class="card-body">
             <h3>Username:</h3>
-            {{ connection.sender.username }}
+            <p>
+              {{ connection.sender.username }}
+            </p>
             <h3>Location</h3>
-            {{ connection.sender.current_location }}
+            <p>
+              {{ connection.sender.current_location }}
+            </p>
             <h3>bio:</h3>
-            {{ connection.sender.bio }}
+            <p>
+              {{ connection.sender.bio }}
+            </p>
             <button v-on:click="handleAccept(connection)">Accept</button>
             <hr />
             <button v-on:click="handleDecline">Decline</button>
