@@ -5,46 +5,49 @@
       <input v-model="userFilter" list="users" />
       <datalist id="users">
         <input v-model="userFilter" />
-        <option
-          v-for="user in filterBy(users, userFilter, 'username')"
-          :key="user.id"
-        >
+        <option v-for="user in filterBy(users, userFilter, 'username')" :key="user.id">
           {{ user.username }}
         </option>
       </datalist>
     </div>
-    <div class="user-info">
+    <div class="accepted-user-info d-flex row align-items-center">
       <h1>Your Accepted Connections</h1>
 
-      <div
-        v-for="connection in accepted_connections"
-        v-bind:key="connection.id"
-      >
-        <router-link :to="`/connections/${connection.id}`">
-          <img :src="connection.connected_user.image_url" />
-        </router-link>
-        <h3>Username:</h3>
-        {{ connection.connected_user.username }}
-        <h3>Location</h3>
-        {{ connection.connected_user.current_location }}
-        <h3>bio:</h3>
-        {{ connection.connected_user.bio }}
-        <hr />
+      <div v-for="connection in accepted_connections" v-bind:key="connection.id">
+        <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
+          <router-link :to="`/connections/${connection.id}`">
+            <img :src="connection.connected_user.image_url" class="card-img-top" />
+          </router-link>
+          <div class="card-body">
+            <h3>Username:</h3>
+            {{ connection.connected_user.username }}
+            <h3>Location</h3>
+            {{ connection.connected_user.current_location }}
+            <h3>bio:</h3>
+            {{ connection.connected_user.bio }}
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="pending-user-info d-flex row align-items-center">
       <h1>Your Pending Connections</h1>
       <div v-for="connection in pending_connections" v-bind:key="connection.id">
-        <router-link :to="`/users-show/${connection.sender.id}`">
-          <img :src="connection.sender.image_url" />
-        </router-link>
-        <h3>Username:</h3>
-        {{ connection.sender.username }}
-        <h3>Location</h3>
-        {{ connection.sender.current_location }}
-        <h3>bio:</h3>
-        {{ connection.sender.bio }}
-        <button v-on:click="handleAccept(connection)">Accept</button>
-        <hr />
-        <button v-on:click="handleDecline">Decline</button>
+        <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
+          <router-link :to="`/users-show/${connection.sender.id}`">
+            <img :src="connection.sender.image_url" class="card-img-top" />
+          </router-link>
+          <div class="card-body">
+            <h3>Username:</h3>
+            {{ connection.sender.username }}
+            <h3>Location</h3>
+            {{ connection.sender.current_location }}
+            <h3>bio:</h3>
+            {{ connection.sender.bio }}
+            <button v-on:click="handleAccept(connection)">Accept</button>
+            <hr />
+            <button v-on:click="handleDecline">Decline</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -104,32 +107,47 @@ export default {
       var params = {
         status: 1,
       };
-      axios
-        .patch(`/api/connections/${connection.id}`, params)
-        .then((response) => {
-          console.log(response.data);
-          var index = this.pending_connections.indexOf(connection);
-          this.pending_connections.splice(index, 1);
-          let updatedConnection = {
-            connected_user: response.data.connection_profile,
-            messages: [],
-            status: 1,
-          };
-          this.accepted_connections.unshift(updatedConnection);
-        });
+      axios.patch(`/api/connections/${connection.id}`, params).then((response) => {
+        console.log(response.data);
+        var index = this.pending_connections.indexOf(connection);
+        this.pending_connections.splice(index, 1);
+        let updatedConnection = {
+          connected_user: response.data.connection_profile,
+          messages: [],
+          status: 1,
+        };
+        this.accepted_connections.unshift(updatedConnection);
+      });
     },
     handleDecline: function (connection) {
       var params = {
         status: -1,
       };
-      axios
-        .patch(`/api/connections/${connection.id}`, params)
-        .then((response) => {
-          console.log(response.data);
-          var index = this.pending_connections.indexOf(connection);
-          this.pending_connections.splice(index, 1);
-        });
+      axios.patch(`/api/connections/${connection.id}`, params).then((response) => {
+        console.log(response.data);
+        var index = this.pending_connections.indexOf(connection);
+        this.pending_connections.splice(index, 1);
+      });
     },
   },
 };
 </script>
+
+<style scoped>
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  max-width: 100%;
+  height: auto; */
+}
+.card {
+  display: flex;
+  justify-content: center;
+}
+</style>

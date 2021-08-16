@@ -10,8 +10,6 @@
           <br />
           <img :src="user.image_url" style="width: 400px" />
           <br />
-          Name:
-
           <br />
           Username:
           {{ user.username }}
