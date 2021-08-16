@@ -1,6 +1,6 @@
 <template>
-  <div class="edit-user-info-menu">
-    <button v-on:click="showUserInfo(user)">Edit</button>
+  <div class="edit-user-info-menu form-group d-flex justify-content-center">
+    <button type="button" class="btn btn-light" v-on:click="showUserInfo(user)">Edit</button>
     <span class="edit-user-info">
       <dialog id="user-details">
         <form method="dialog">
@@ -15,22 +15,17 @@
           </p>
           <p>
             Email:
-            <input type="text" v-model="user.email" />
+            <input type="email" v-model="user.email" />
           </p>
           <p>
             Bio:
-            <input type="text" v-model="user.bio" />
+            <input type="text" v-model="user.bio" class="form-control" />
           </p>
           <p>
             Profile Picture:
             <input type="text" v-model="user.image_url" />
           </p>
-          <button
-            v-on:click.prevent="updateProfileInfo(user)"
-            data-dismiss="modal"
-          >
-            Update
-          </button>
+          <button v-on:click.prevent="updateProfileInfo(user)" data-dismiss="modal">Update</button>
           <button>Close</button>
         </form>
       </dialog>
@@ -58,13 +53,11 @@ export default {
   },
   methods: {
     showUser: function () {
-      axios
-        .get(`/api/users/${localStorage.getItem("user_id")}`)
-        .then((response) => {
-          // console.log(this.$route.params.id);
-          this.user = response.data;
-          console.log(response.data);
-        });
+      axios.get(`/api/users/${localStorage.getItem("user_id")}`).then((response) => {
+        // console.log(this.$route.params.id);
+        this.user = response.data;
+        console.log(response.data);
+      });
     },
     updateProfileInfo: function (user) {
       var params = {

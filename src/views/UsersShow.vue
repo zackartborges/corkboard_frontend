@@ -1,9 +1,7 @@
 <template>
   <div class="users-show">
     <users-show-info></users-show-info>
-    <edit-user-info-menu
-      v-if="$parent.getUserId() == $route.params.id"
-    ></edit-user-info-menu>
+    <edit-user-info-menu v-if="$parent.getUserId() == $route.params.id"></edit-user-info-menu>
   </div>
 </template>
 
