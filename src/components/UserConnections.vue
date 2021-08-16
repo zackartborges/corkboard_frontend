@@ -16,7 +16,8 @@
       <div v-for="connection in accepted_connections" v-bind:key="connection.id">
         <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
           <router-link :to="`/connections/${connection.id}`">
-            <img :src="connection.connected_user.image_url" class="card-img-top" />
+            <img v-if="!connection.connected_user.image_url" src="/img/default_profile_pic.png" />
+            <img v-else :src="connection.connected_user.image_url" class="card-img-top" />
           </router-link>
           <div class="card-body d-flex row align-items-center">
             <h3>Username:</h3>
@@ -40,7 +41,8 @@
       <div v-for="connection in pending_connections" v-bind:key="connection.id">
         <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
           <router-link :to="`/users-show/${connection.sender.id}`">
-            <img :src="connection.sender.image_url" class="card-img-top" />
+            <img v-if="!connection.sender.image_url" src="/img/default_profile_pic.png" />
+            <img v-else :src="connection.sender.image_url" class="card-img-top" />
           </router-link>
           <div class="card-body">
             <h3>Username:</h3>
