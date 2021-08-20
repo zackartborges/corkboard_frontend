@@ -15,7 +15,7 @@
 
       <div v-for="connection in accepted_connections" v-bind:key="connection.id">
         <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
-          <router-link :to="`/connections/${connection.id}`">
+          <router-link :to="`/connections/${connection.id}`" style="padding: 15px 0 0 0">
             <img v-if="!connection.connected_user.image_url" src="/img/default_profile_pic.png" />
             <img v-else :src="connection.connected_user.image_url" class="card-img-top" />
           </router-link>
@@ -38,9 +38,11 @@
     </div>
     <div class="pending-user-info text-center">
       <h1>Your Pending Connections</h1>
+      <!-- <h4 v-if="!user.pending_connections">No Pending Connections</h4> -->
       <div v-for="connection in pending_connections" v-bind:key="connection.id">
         <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
-          <router-link :to="`/users-show/${connection.sender.id}`">
+          <!-- Syntax for setting a default ptofile picture. Will be way more efficient to do this upon profile creation. -->
+          <router-link :to="`/users-show/${connection.sender.id}`" style="padding: 15px 0 0 0">
             <img v-if="!connection.sender.image_url" src="/img/default_profile_pic.png" />
             <img v-else :src="connection.sender.image_url" class="card-img-top" />
           </router-link>
@@ -153,6 +155,7 @@ img {
   border-radius: 4px;
   padding: 5px;
   width: 150px;
+  height: 150px;
   /* display: block;
   margin-left: auto;
   margin-right: auto;
