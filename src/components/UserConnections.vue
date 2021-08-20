@@ -1,7 +1,7 @@
 <template>
   <div class="connection-index">
-    <div class="searchbar">
-      Search for Users:
+    <div class="searchbar" style="padding: 10px 0 10px 0">
+      Search Connections:
       <input v-model="userFilter" list="users" />
       <datalist id="users">
         <input v-model="userFilter" />
