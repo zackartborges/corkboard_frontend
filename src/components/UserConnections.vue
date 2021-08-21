@@ -12,7 +12,9 @@
     </div>
     <div class="accepted-user-info text-center">
       <h1>Your Accepted Connections</h1>
-
+      <p v-if="this.accepted_connections.length == 0" style="padding: 15px 0 15px 0">
+        You do not have any connections.
+      </p>
       <div v-for="connection in accepted_connections" v-bind:key="connection.id">
         <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
           <router-link :to="`/connections/${connection.id}`" style="padding: 15px 0 0 0">
@@ -38,7 +40,9 @@
     </div>
     <div class="pending-user-info text-center">
       <h1>Your Pending Connections</h1>
-      <!-- <h4 v-if="!user.pending_connections">No Pending Connections</h4> -->
+      <p v-if="this.pending_connections.length == 0" style="padding: 15px 0 15px 0">
+        You do not have any pending connections.
+      </p>
       <div v-for="connection in pending_connections" v-bind:key="connection.id">
         <div class="card text-white mx-auto border-info mb-3" style="max-width: 40rem">
           <!-- Syntax for setting a default ptofile picture. Will be way more efficient to do this upon profile creation. -->
@@ -61,7 +65,7 @@
             </p>
             <button v-on:click="handleAccept(connection)">Accept</button>
             <hr />
-            <button v-on:click="handleDecline">Decline</button>
+            <button v-on:click="handleDecline(connection)">Decline</button>
           </div>
         </div>
       </div>
@@ -139,6 +143,7 @@ export default {
       var params = {
         status: -1,
       };
+      console.log(connection);
       axios.patch(`/api/connections/${connection.id}`, params).then((response) => {
         console.log(response.data);
         var index = this.pending_connections.indexOf(connection);

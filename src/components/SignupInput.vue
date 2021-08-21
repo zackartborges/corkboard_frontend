@@ -19,6 +19,10 @@
         <label>Email:</label>
         <input type="email" class="form-control" v-model="email" />
       </div>
+      <!-- <div class="form-group">
+        <label>Email:</label>
+        <input type="file" class="form-control" v-model="imageUrl" />
+      </div> -->
       <!-- Blocks out Bio, current location,profile photo until backend create method is altered -->
       <!-- <div class="form-group"> -->
       <!-- ideally user would be able to choose profile picture through device -->
