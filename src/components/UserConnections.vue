@@ -65,7 +65,7 @@
             </p>
             <button v-on:click="handleAccept(connection)">Accept</button>
             <hr />
-            <button v-on:click="handleDecline">Decline</button>
+            <button v-on:click="handleDecline(connection)">Decline</button>
           </div>
         </div>
       </div>
@@ -143,6 +143,7 @@ export default {
       var params = {
         status: -1,
       };
+      console.log(connection);
       axios.patch(`/api/connections/${connection.id}`, params).then((response) => {
         console.log(response.data);
         var index = this.pending_connections.indexOf(connection);
