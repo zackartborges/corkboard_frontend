@@ -61,10 +61,9 @@
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-</style>
-<style>
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Quicksand, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .navbar-brand {
