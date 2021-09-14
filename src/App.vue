@@ -18,19 +18,13 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li v-if="isLoggedIn()" class="nav-item">
-              <router-link class="nav-link" to="/connections"
-                >Connections
-              </router-link>
+              <router-link class="nav-link" to="/connections">Connections</router-link>
             </li>
             <li v-if="isLoggedIn()" class="nav-item">
-              <router-link :to="`/users-show/${getUserId()}`" class="nav-link"
-                >My Profile</router-link
-              >
+              <router-link :to="`/users-show/${getUserId()}`" class="nav-link">My Profile</router-link>
             </li>
             <li v-if="isLoggedIn()" class="nav-item">
-              <router-link to="/users" class="nav-link" href="#"
-                >Find Friends</router-link
-              >
+              <router-link to="/users" class="nav-link" href="#">Find Friends</router-link>
             </li>
             <li v-if="isLoggedIn()" class="nav-item dropdown">
               <a
@@ -40,15 +34,12 @@
                 role="button"
                 aria-haspopup="true"
                 aria-expanded="false"
-                >Creators</a
               >
+                Creators
+              </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="https://github.com/zackartborges"
-                  >Zack Borges</a
-                >
-                <a class="dropdown-item" href="https://github.com/winstonbarbe"
-                  >Winston Barbe</a
-                >
+                <a class="dropdown-item" href="https://github.com/zackartborges">Zack Borges</a>
+                <a class="dropdown-item" href="https://github.com/winstonbarbe">Winston Barbe</a>
               </div>
             </li>
             <li v-if="isLoggedIn()" class="nav-item">
