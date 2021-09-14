@@ -60,29 +60,16 @@
 </template>
 
 <style>
-/* h1 {
-  color: red;
-}
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+</style>
+<style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.navbar-brand {
+  font-family: "Bebas Neue. cursive";
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-} */
 </style>
 
 <script>
